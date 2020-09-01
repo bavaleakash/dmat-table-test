@@ -35,7 +35,8 @@ import { DialogComponent } from './dialog/dialog.component';
     MatDialogModule
   ],
   entryComponents: [
-    DialogComponent
+    DialogComponent,
+    ExpansionPanelComponent
   ],
   bootstrap: [AppComponent]
 })
