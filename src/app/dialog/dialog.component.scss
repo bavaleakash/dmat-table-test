@@ -1,0 +1,72 @@
+.storybook-demo-holder {
+	.holder {
+		display: flex;
+		background: white;
+		border-radius: 3px;
+		box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.1);		
+		margin-bottom: 10px;
+		::ng-deep .mat-form-field-wrapper{
+			margin-bottom: -5px;
+		}
+		.header {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 20px 15px;
+			border-bottom: 1px solid #E5E5E5;
+			margin-bottom: 10px;
+
+			span {
+				font-weight: bold;
+				font-size: 16px;
+			}
+
+			img {
+				cursor: pointer;
+			}
+		}
+		.content {
+			width: 500px;
+			padding: 20px 15px;
+			.mat-form-field {
+				width: 100%;
+			}
+		}
+		.footer {
+			border-top: 1px solid #E5E5E5;
+			padding: 20px 15px;
+			text-align: right;
+
+			button {
+				background-color: #008641;
+				color: #E5E5E5;
+				letter-spacing: 2px;
+			}
+
+		}
+
+	}
+}
+
+::ng-deep .mat-accent .mat-slider-track-fill {
+  background-color: #27B963;
+} 
+
+::ng-deep .mat-accent .mat-slider-thumb {
+	background-color: #008641;
+}
+
+button:disabled {
+	background-color: lightgray;
+  }
+
+  .botton-button{
+	padding: 0px 20px;
+    margin-right: 20px;
+    text-align: right;
+    background-color: #008641;
+    color: #E5E5E5;
+	position: relative;
+	margin-left:10px;
+	float: right;
+  }
