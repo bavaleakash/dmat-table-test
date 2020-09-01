@@ -74,7 +74,11 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.tableData.metadata?.filter?.filterBy) {
+    if (
+      this.tableData.metadata &&
+      this.tableData.metadata.filter &&
+      this.tableData.metadata.filter.filterBy
+    ) {
       this.tableData.metadata.filter.filterBy = this.dmatTableService.getFilter('moviesTable'); // getting applied filter from session storage
     }
     this.getTableData();
