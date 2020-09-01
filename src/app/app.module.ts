@@ -13,12 +13,14 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ExpansionPanelComponent } from './expansion-panel/expansion-panel.component';
 import { DialogComponent } from './dialog/dialog.component';
+import { NavigationComponent } from './navigation/navigation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ExpansionPanelComponent,
-    DialogComponent
+    DialogComponent,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,8 @@ import { DialogComponent } from './dialog/dialog.component';
   ],
   entryComponents: [
     DialogComponent,
-    ExpansionPanelComponent
+    ExpansionPanelComponent,
+    NavigationComponent
   ],
   bootstrap: [AppComponent]
 })

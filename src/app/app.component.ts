@@ -74,7 +74,9 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.tableData.metadata.filter.filterBy = this.dmatTableService.getFilter('moviesTable'); // getting applied filter from session storage
+    if (this.tableData.metadata?.filter?.filterBy) {
+      this.tableData.metadata.filter.filterBy = this.dmatTableService.getFilter('moviesTable'); // getting applied filter from session storage
+    }
     this.getTableData();
   }
 
@@ -86,18 +88,18 @@ export class AppComponent implements OnInit {
 
         this.tableData.data.push({
           ...m,
-          onRowClickLink: '', // 'onRowClickLink' is an implicit key for on row click navigation to another route
           colorBar: m.Rating === 'R' ? 'red' : '', // 'colorBar' is an implicit key for color bars
+          onRowClickLink: '/navigate', // 'onRowClickLink' is an implicit key for on row click navigation to another route
           WorldwideGross: '$' + m.WorldwideGross, // can use pipes
           ProductionBudget: '$' + m.ProductionBudget, // can use pipes,
           ReleaseDate: m.ReleaseDate,
           RunningTime: (m.RunningTime ? m.RunningTime + ' mins' : null),
           IMDBRating: (m.IMDBRating >= 9 ? { value: m.IMDBRating, color: '#ff00f2' } : m.IMDBRating), // { value: string, color: string } can be applied to any key
-          isExpandComponent: this.domSanitizer.bypassSecurityTrustHtml(`<expansion-panel content=${m.id}></expansion-panel>`),
           rowButtons: this.domSanitizer.bypassSecurityTrustHtml(
             `<span onclick="Window['app-component'].zone.run(() => { Window['app-component'].edit(\'${m.id}\'); })" style="font-size: 20px;padding: 5px;" class="material-icons">edit</span>` +
             `<span onclick="Window['app-component'].zone.run(() => { Window['app-component'].delete(\'${m.id}\'); });" style="font-size: 20px;padding: 5px;" class="material-icons">delete</span>`
           ),
+          isExpandComponent: this.domSanitizer.bypassSecurityTrustHtml(`<expansion-panel content=${m.id}></expansion-panel>`)
         });
       });
       this.updateTable = !this.updateTable;
