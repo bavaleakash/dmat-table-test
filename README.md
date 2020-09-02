@@ -1,6 +1,6 @@
 # Dynamic Mat Table Library Demo
 
-This Demo project uses the npm library called [dmat-libray](https://www.npmjs.com/package/dmat-table)
+This Demo project uses the npm library called [dmat-table](https://www.npmjs.com/package/dmat-table)
 
 ## Demo
 
