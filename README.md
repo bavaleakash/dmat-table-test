@@ -1,6 +1,6 @@
 # Dynamic Mat Table Library Demo
 
-This Demo project used the npm library called [dmat-libray](https://www.npmjs.com/package/dmat-table)
+This Demo project uses the npm library called [dmat-libray](https://www.npmjs.com/package/dmat-table)
 
 ## Demo
 
@@ -8,7 +8,7 @@ Live Demo [here](https://stackblitz.com/github/bavaleakash/dmat-table-test)
 
 ## Documentation
 
-**Full documentation will be released with the stable version of this library**
+Full documentation [here](https://medium.com/@bavaleakash/dynamic-mat-table-angular-library-2090c6231cf8)
 
 ## Features
 
