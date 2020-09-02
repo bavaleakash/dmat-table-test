@@ -2,8 +2,8 @@ import { Component, OnInit, Injector, NgZone } from '@angular/core';
 import { DmatTable, DmatTableService } from 'dmat-table';
 import { AppService } from './app.service';
 import { DomSanitizer } from '@angular/platform-browser';
-import { createCustomElement, WithProperties } from '@angular/elements';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { createCustomElement } from '@angular/elements';
+import { MatDialog } from '@angular/material/dialog';
 import { ExpansionPanelComponent } from './expansion-panel/expansion-panel.component';
 import { DialogComponent } from './dialog/dialog.component';
 
@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
   showTable: boolean;
   updateTable: boolean;
   tableData: DmatTable = {
-    headers: ['Name', 'Director', 'Gross', 'Budget', 'Run Time', 'Genre', 'Rating', 'Release Date', 'IMDB', 'Votes'],
+    headers: ['Name', 'Director', 'Gross ($)', 'Budget ($)', 'Run Time (mins)', 'Genre', 'Rating', 'Release Date', 'IMDB', 'Votes'],
     keys: ['Title', 'Director', 'WorldwideGross', 'ProductionBudget', 'RunningTime', 'Genre', 'Rating', 'ReleaseDate', 'IMDBRating', 'IMDBVotes'],
     metadata: {
       tableHeading: 'Movies List',
@@ -88,16 +88,11 @@ export class AppComponent implements OnInit {
     setTimeout(() => {
       this.showTable = true;
       const moviesData = this.appService.getAllMovies();
-      moviesData.forEach((m, i) => {
-
+      moviesData.forEach(m => {
         this.tableData.data.push({
           ...m,
           colorBar: m.Rating === 'R' ? 'red' : '', // 'colorBar' is an implicit key for color bars
           onRowClickLink: '/navigate', // 'onRowClickLink' is an implicit key for on row click navigation to another route
-          WorldwideGross: '$' + m.WorldwideGross, // can use pipes
-          ProductionBudget: '$' + m.ProductionBudget, // can use pipes,
-          ReleaseDate: m.ReleaseDate,
-          RunningTime: (m.RunningTime ? m.RunningTime + ' mins' : null),
           IMDBRating: (m.IMDBRating >= 9 ? { value: m.IMDBRating, color: '#ff00f2' } : m.IMDBRating), // { value: string, color: string } can be applied to any key
           rowButtons: this.domSanitizer.bypassSecurityTrustHtml(
             `<span onclick="Window['app-component'].zone.run(() => { Window['app-component'].edit(\'${m.id}\'); })" style="font-size: 20px;padding: 5px;" class="material-icons">edit</span>` +
